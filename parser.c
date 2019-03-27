@@ -73,17 +73,27 @@ int ttail(char *token, int subtotal)
 }
 
 /**
- * <bexpr> -> 
+ * Grammer:
+ *      <bexpr> -> <expr>
  *
  */
 int bexpr(char *token) {
 
-    //TODO finish function
+    //TODO Figure out if this is correct
+    int subtotal = 0;
+
+    
+    if( /* not a blank line */ ) {
+        subtotal = expr(token);
+    } else {
+        return subtotal;
+    }
 
 } // end bexpr()
 
 /**
- * <term> -> 
+ * Grammer:
+ *      <term> -> <stmt> <stail>
  *
  */
 int term(char *token) {
@@ -93,7 +103,8 @@ int term(char *token) {
 } // end term()
 
 /**
- * <stmt> -> 
+ * Grammer:
+ *      <stmt> -> <factor> <ftail>
  *
  */
 int stmt(char *token) {
@@ -103,7 +114,8 @@ int stmt(char *token) {
 } //end stmt()
 
 /**
- * <stail> ->
+ * Grammer:
+ *      <stail> -> <mult_div_tok> <stmt> <stail> | e
  *
  */
 int stail(char *token, int subtotal) {
@@ -113,7 +125,8 @@ int stail(char *token, int subtotal) {
 } //ends stail()
 
 /**
- * <stail> ->
+ * Grammer:
+ *      <factor> -> <expp> ^ <factor> | <expp>
  *
  */
 int factor(char *token) {
@@ -121,6 +134,12 @@ int factor(char *token) {
     //TODO finish function
 
 } //end factor()
+
+/**
+ * Grammer:
+ *      <ftail> -> <compare_tok> <factor> <ftail> | e
+ *
+ */
 int ftail(char *token, int subtotal) {
 
     //TODO finish function
@@ -128,7 +147,8 @@ int ftail(char *token, int subtotal) {
 } //end ftail()
 
 /**
- * <expp> -> 
+ * Grammer:
+ *      <expp> -> ( <expr> ) | <num>
  *
  */
 int expp(char *token) {
@@ -138,7 +158,8 @@ int expp(char *token) {
 } //end expp()
 
 /**
- *
+ * Grammer:
+ *      <add_sub_tok> -> + | -
  */
 void add_sub_tok(char *token) {
 
@@ -147,6 +168,8 @@ void add_sub_tok(char *token) {
 } //end add_sub_tok()
 
 /**
+ * Grammer:
+ *      <mul_div_tok> ->  * | /
  *
  */
 void mul_div_tok(char *token) {
@@ -156,6 +179,8 @@ void mul_div_tok(char *token) {
 } //end mul_div_tok()
 
 /**
+ * Grammer:
+ *      <compare_tok> ->  < | > | <= | >= | ! = | ==
  *
  */
 void compare_tok(char *token) {
@@ -175,6 +200,8 @@ void expon_tok(char *token) {
 } //end expon_tok()
 
 /**
+ * Grammer:
+ *      <num> ->  {0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}+
  *
  */
 int num(char *token) {
