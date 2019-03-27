@@ -4,8 +4,7 @@ Author: Evert Ball
 
 Version: April 10, 2019
 
-# Project 3: An Interpreter for Arithmetic Expressions that usa a Recursive 
-# Descent Parser
+# Project 3: An Interpreter for Arithmetic Expressions that usa a Recursive Descent Parser
 
 ## Description
 This project in an interpreter in C for arithmetic expressions ad defined by a 
@@ -15,41 +14,36 @@ if not, then checks for it the input is syntactically correct. Then outputs to
 a file.
 
 ## Files Used:
+
 input\_left\_associative.txt
-
 output.txt
-
 tokenizer.c
-
 tokenizer.h
-
 parser.c
-
 parser.h
-
 interpreter.c
 
 ## Usage
-### To Complie:
+#### To Complie:
     gcc -Wall interpreter.c -o interpreter
 
-### To Run:
+#### To Run:
     ./interpreter ./input_and_output_files/input_left_associative.txt output.txt
 
 ## Output
-### If there are no errors found.(Normal output)
+#### If there are no errors found.(Normal output)
     
     <the input line>
     Syntax OK
     Value is <subtotal>
 
-### If there is an lexical Error found.
+#### If there is an lexical Error found.
     
     <the input line>
     ===> '<token>'
     Lexical Error: not a lexeme
 
-### If there is a Syntax Error.
+#### If there is a Syntax Error.
     
     <the input line>    
     ===> '<token>' expected
