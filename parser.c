@@ -72,4 +72,123 @@ int ttail(char *token, int subtotal)
       return subtotal;
 }
 
+/**
+ * <bexpr> -> 
+ *
+ */
+int bexpr(char *token) {
 
+    //TODO finish function
+
+} // end bexpr()
+
+/**
+ * <term> -> 
+ *
+ */
+int term(char *token) {
+
+    //finish function
+
+} // end term()
+
+/**
+ * <stmt> -> 
+ *
+ */
+int stmt(char *token) {
+
+    //TODO finish function
+
+} //end stmt()
+
+/**
+ * <stail> ->
+ *
+ */
+int stail(char *token, int subtotal) {
+
+    //TODO finish function
+
+} //ends stail()
+
+/**
+ * <stail> ->
+ *
+ */
+int factor(char *token) {
+
+    //TODO finish function
+
+} //end factor()
+int ftail(char *token, int subtotal) {
+
+    //TODO finish function
+
+} //end ftail()
+
+/**
+ * <expp> -> 
+ *
+ */
+int expp(char *token) {
+
+    //TODO finish function
+
+} //end expp()
+
+/**
+ *
+ */
+void add_sub_tok(char *token) {
+
+    //TODO finish function
+
+} //end add_sub_tok()
+
+/**
+ *
+ */
+void mul_div_tok(char *token) {
+
+    //TODO finish function
+
+} //end mul_div_tok()
+
+/**
+ *
+ */
+void compare_tok(char *token) {
+
+    //TODO finish function
+
+} //end compare_tok()
+
+/**
+ * helper function
+ *
+ */
+void expon_tok(char *token) {
+
+    //TODO finish function
+
+} //end expon_tok()
+
+/**
+ *
+ */
+int num(char *token) {
+
+    //TODO finish function
+
+} //end num
+
+/**
+ * helper function
+ *
+ */
+int is_number(char *token) {
+
+    //TODO finish function
+
+} //end is_number()
