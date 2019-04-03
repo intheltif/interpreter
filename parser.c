@@ -33,16 +33,21 @@
 // <expr> -> <term> <ttail>
 int expr(char *token)
 {
+   printf("\nEntered <expr>\n");
    int subtotal = term(token);
-   if (subtotal == ERROR)
+   if (subtotal == ERROR) {
       return subtotal;
-   else
+   } else {
+      printf("\nExited <expr>\n");
       return ttail(token, subtotal);
+   }
 }
 
 //<ttail> -> <add_sub_tok> <term> <ttail> | e
 int ttail(char *token, int subtotal)
 {
+
+   printf("\nEntered <ttail>\n");
    int term_value;
 
    if (!strncmp(token, "+", 1))
@@ -51,10 +56,12 @@ int ttail(char *token, int subtotal)
       term_value = term(token);
 
       // if term returned an error, give up otherwise call ttail
-      if (term_value == ERROR)
-         return term_value;
-      else
-         return ttail(token, (subtotal + term_value));
+      if (term_value == ERROR) {
+          printf("\nExited <ttail>\n");
+          return term_value;
+      } else {
+          return ttail(token, (subtotal + term_value));
+      }
    }
    else if(!strncmp(token, "-", 1))
    {
@@ -62,14 +69,19 @@ int ttail(char *token, int subtotal)
       term_value = term(token);
 
       // if term returned an error, give up otherwise call ttail
-      if (term_value == ERROR)
+      if (term_value == ERROR) {
+         printf("\nExited <ttail>\n");
          return term_value;
+      }
       else
          return ttail(token, (subtotal - term_value));
    }
    /* empty string */
-   else
+   else 
+   {
+      printf("\nExited <ttail>\n");
       return subtotal;
+   }
 }
 
 /**
@@ -79,15 +91,13 @@ int ttail(char *token, int subtotal)
  */
 int bexpr(char *token) {
 
-    //TODO Figure out if this is correct
-    int subtotal = 0;
+    printf("\nEntered <bexpr>\n");
 
+    int subtotal = 0;
     
-    if( /* not a blank line */ ) {
-        subtotal = expr(token);
-    } else {
-        return subtotal;
-    }
+    subtotal = expr(token);
+    printf("\nExited <bexpr>\n");
+    return subtotal;
 
 } // end bexpr()
 
@@ -98,7 +108,17 @@ int bexpr(char *token) {
  */
 int term(char *token) {
 
-    //finish function
+    printf("\nEntered <term>\n");
+
+    int subtotal = stmt(token);
+
+    if(subtotal == ERROR) {
+        printf("\nExited <term>\n");
+        return subtotal;
+    } else {
+        printf("\nExited <term>\n");
+        return stail(token, subtotal);
+    }
 
 } // end term()
 
@@ -108,8 +128,18 @@ int term(char *token) {
  *
  */
 int stmt(char *token) {
+    //TODO remove first '\n' from printf?
+    printf("\nEntered <stmt>\n");
 
-    //TODO finish function
+    int subtotal = factor(token);
+
+    if(subtotal == ERROR) {
+        printf("\nExited <stmt>\n");
+        return subtotal;
+    } else {
+        printf("\nExited <stmt>\n");
+        return ftail(token, subtotal);
+    }
 
 } //end stmt()
 
@@ -122,6 +152,15 @@ int stail(char *token, int subtotal) {
 
     //TODO finish function
 
+    if() {
+        
+    } else if() {
+
+    } else {
+        printf("\nExited <stail>\n");
+        return subtotal;
+    }
+
 } //ends stail()
 
 /**
@@ -133,6 +172,15 @@ int factor(char *token) {
 
     //TODO finish function
 
+    if() {
+
+    } else if() {
+
+    } else {
+        printf("\nExited <factor>\n");
+        return expp(token);
+    }
+
 } //end factor()
 
 /**
@@ -142,7 +190,17 @@ int factor(char *token) {
  */
 int ftail(char *token, int subtotal) {
 
+    printf("\nEntered <ftail>\n");
+
     //TODO finish function
+    if() {
+
+    } else if() {
+
+    } else {
+        printf("\nExited <ftail>\n");
+        return subtotal
+    }
 
 } //end ftail()
 
