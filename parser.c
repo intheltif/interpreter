@@ -30,7 +30,15 @@
  */
 
 
-// <expr> -> <term> <ttail>
+/**
+ * This function parses the grammer for <term> as defined below.
+ *      
+ *      Grammer:
+ *          <expr> -> <term> <ttail>
+ *
+ * @param token the token to parse.
+ * @return a few different things could be returned <-- TODO fix this desc.
+ */
 int expr(char *token)
 {
    printf("\nEntered <expr>\n");
@@ -43,7 +51,16 @@ int expr(char *token)
    }
 }
 
-//<ttail> -> <add_sub_tok> <term> <ttail> | e
+/**
+ * This function parses the grammer for <term> as defined below.
+ *      
+ *      Grammer:
+ *          <ttail> -> <add_sub_tok> <term> <ttail> | e
+ *
+ * @param token the token to parse.
+ * @param subtotal The current subtotal.
+ * @return a few different things could be returned <-- TODO fix this desc.
+ */
 int ttail(char *token, int subtotal)
 {
 
@@ -85,9 +102,13 @@ int ttail(char *token, int subtotal)
 }
 
 /**
- * Grammer:
- *      <bexpr> -> <expr>
+ * This function parses the grammer for <term> as defined below.
  *
+ *      Grammer:
+ *          <bexpr> -> <expr>
+ *
+ * @param token the token to parse.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int bexpr(char *token) {
 
@@ -102,9 +123,13 @@ int bexpr(char *token) {
 } // end bexpr()
 
 /**
- * Grammer:
- *      <term> -> <stmt> <stail>
+ * This function parses the grammer for <term> as defined below.
+ *      
+ *      Grammer:
+ *          <term> -> <stmt> <stail>
  *
+ * @param token the token to parse.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int term(char *token) {
 
@@ -123,9 +148,13 @@ int term(char *token) {
 } // end term()
 
 /**
- * Grammer:
- *      <stmt> -> <factor> <ftail>
+ * This function parses the grammer for <stmt> as defined below.
  *
+ *      Grammer:
+ *          <stmt> -> <factor> <ftail>
+ *
+ * @param token the token to parse.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int stmt(char *token) {
     //TODO remove first '\n' from printf?
@@ -144,9 +173,14 @@ int stmt(char *token) {
 } //end stmt()
 
 /**
- * Grammer:
- *      <stail> -> <mult_div_tok> <stmt> <stail> | e
+ * This function parses the grammer for <stail> as defined below.
  *
+ *      Grammer:
+ *          <stail> -> <mult_div_tok> <stmt> <stail> | e
+ *
+ * @param token the token to parse.
+ * @param subtotal The current subtotal.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int stail(char *token, int subtotal) {
 
