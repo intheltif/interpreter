@@ -151,12 +151,34 @@ int stmt(char *token) {
 int stail(char *token, int subtotal) {
 
     //TODO finish function
+    int stmt_value;
 
-    if() {
+    if( !strncmp(token, "*", 1) ) {
         
-    } else if() {
-
-    } else {
+        mult_div_tok(token);
+        stmt_value = stmt(token);
+        
+        // If stmt returned an error, give up. Otherwise, call stail.
+        if(stmt_value == ERROR) {
+            printf("\nExited <stail>\n");
+            return stmt_value;
+        } else {
+            return stail( token, (subtotal * stmt_value) );
+        }
+    } else if( !strncmp(token, "/", 1) ) {
+        
+        mult_div_tok(token);
+        stmt_value = stmt(token);
+        
+        // If stmt returned an error, give up. Otherwise, call stail.
+        if(stmt_value == ERROR) {
+            printf("\nExited <stail>\n");
+            return stmt_value;
+        } else {
+            return stail( token, (subtotal / stmt_value) );
+        }
+    /* empty string */
+    } else { 
         printf("\nExited <stail>\n");
         return subtotal;
     }
@@ -164,9 +186,13 @@ int stail(char *token, int subtotal) {
 } //ends stail()
 
 /**
- * Grammer:
- *      <factor> -> <expp> ^ <factor> | <expp>
+ * This function parses the grammer for <factor> as defined below.
+ *      
+ *      Grammer:
+ *          <factor> -> <expp> ^ <factor> | <expp>
  *
+ * @param token the token to parse.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int factor(char *token) {
 
@@ -184,9 +210,14 @@ int factor(char *token) {
 } //end factor()
 
 /**
- * Grammer:
- *      <ftail> -> <compare_tok> <factor> <ftail> | e
+ * This function takes care of the grammer for <ftail> as defined below.
+ *      
+ *      Grammer:
+ *          <ftail> -> <compare_tok> <factor> <ftail> | e
  *
+ * @param token the token to parse.
+ * @param subtotal The current subtotal.
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int ftail(char *token, int subtotal) {
 
@@ -205,13 +236,36 @@ int ftail(char *token, int subtotal) {
 } //end ftail()
 
 /**
- * Grammer:
- *      <expp> -> ( <expr> ) | <num>
+ * This function takes care of the grammer for <expp> as defined below.
  *
+ *      Grammer:
+ *          <expp> -> ( <expr> ) | <num>
+ *
+ * @param token the token to parse
+ * @return a few different things could be returned <-- TODO fix this desc.
  */
 int expp(char *token) {
+    
+    int subtotal;
 
-    //TODO finish function
+    /* If there is an open parenthesis, start that part of the grammer */
+    if(!strncmp(token, "(", 1)) {
+
+        get_token(token); //get's the "(" and moves to <expr>
+        subtotal = expr(token);
+
+        /* gets the ")" and returns the subtotal. */
+        if(!strncmp(token, ")", 1)) {
+            get_token(token); 
+            return subtotal;
+        /* otherwise there was an error */
+        } else {
+            //do error
+        }
+    /* no parenthesis, must be a number */
+    } else {
+        return num(token);
+    }
 
 } //end expp()
 
@@ -222,6 +276,12 @@ int expp(char *token) {
 void add_sub_tok(char *token) {
 
     //TODO finish function
+    
+    if() {
+        //do +
+    } else {
+        //do -
+    }
 
 } //end add_sub_tok()
 
@@ -234,6 +294,12 @@ void mul_div_tok(char *token) {
 
     //TODO finish function
 
+    if() {
+        //do *
+    } else {
+        //do /
+    }
+
 } //end mul_div_tok()
 
 /**
@@ -244,6 +310,15 @@ void mul_div_tok(char *token) {
 void compare_tok(char *token) {
 
     //TODO finish function
+    
+    switch(token) {
+        case "<":
+            //do <
+            break;
+        case ">":
+            //do >
+            break;
+        
 
 } //end compare_tok()
 
